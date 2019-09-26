@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+     	<script src="jquery-3.2.1.min.JS"></script>
+<script>
+	$(document).ready(function(){
+		$('.btn').click(function(){
+			$('.sidebar').toggleClass('active');
+			$('.fullbody').toggleClass('active');
+			$('.btn').toggleClass('toggle');
+		}) 
+	})
+</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<style type="text/css">
+	.fullbody{
+		margin-top: 40px;
+	}
+	.mbar	
+	{
+		background-color: #2f4f4f;
+		position: fixed;
+		width: 100%;
+		height: 40px;
+		z-index: 2;
+		top:0;
+	}
+	.sidebar ul
+	{
+		list-style: none;
+		margin: 0;
+		padding: 20px 0;
+	}
+	ul li a
+	{
+		padding:10px 50px;
+
+		color: #fff;
+		display: block;
+		text-decoration: none;
+		text-transform: uppercase;
+		border-bottom: 1px solid rgba(0,0,0,.2)
+	}
+	ul li a:hover
+	{
+		background-color: green;
+	}
+	.sidebar
+	{
+		position: fixed;
+		top:0px;
+		left:-250px;
+		background-color: #262626;
+		width: 250px;
+		height:100%;
+		transition: .3s;
+		z-index: 10;
+	}
+
+	.btn
+	{
+
+		position: absolute;
+		top:0;
+		right: -40px;
+		width: 40px;
+		height: 40px;
+        background-color: #f5f5f5;
+        cursor: pointer;
+        border: none;
+        box-sizing: border-box;
+        outline: none;
+	}
+	.sidebar.active
+	{
+		left:0;
+	}
+	.btn span
+	{
+      
+      display: block;
+      top:19px;
+      left:2px;
+      width: 35px;
+      height: 3px;
+      background: #262626;
+      position: absolute;
+      
+      transition: .3s;
+	}
+	
+	
+	.btn span:before
+	{
+      content: '';
+      display: block;
+      top:-10px;
+      left:0px;
+      width: 100%;
+      height: 3px;
+      background: #262626;
+      position: absolute;
+      
+      transition: .3s;
+	}
+	
+     
+	.btn span:after
+	{
+      content: '';
+      display: block;
+      top:10px;
+      left:px;
+      width: 100%;
+      height: 3px;
+      background: #262626;
+      position: absolute;
+      
+      transition: .3s;
+	}
+
+	.btn.toggle span
+	{
+		background: transparent;
+	}
+	.btn.toggle span:before
+	{
+		top:0;
+		transform:rotate(45deg);
+	}
+	.btn.toggle span:after
+	{
+		top:0;
+		transform:rotate(-45deg);
+	}
+
+	
+
+	.fullbody.active
+	{
+	   	
+	   	margin-left:250px; 
+	}
+	</style>
+</head>
+<body>
+    	<div class="sidebar">
+		<ul>
+			<li><a href="#">home</a></li>
+			<li><a href="#">profile</a></li>
+			<li><a href="#">stats</a></li>
+			<li><a href="#">questions</a></li>
+		</ul>
+	
+	
+		<button class="btn">
+			<span></span>
+		</button>
+	    </div>
+	    <div class="mbar"></div>
+
+	<div class="fullbody">  
+	<form action="" method="$POST">
+    <h1>Details of Teaching experience</h1>
+	<table id="Teaching">
+
+	<th scope="col">Name of Organisation</th><th scope="col">Place of Organisation</th><th scope="col">Designation</th><th scope="col">Pay Scale</th><th scope="col">AGP/APL</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Type of Organization</th><th scope="col">Remove</th>
+    <tr id="row0">
+	<td><input type="text" name="Organization_name[]"  class="form-control org_list" /></td>
+	<td><input type="text" name="Org_place[]"  class="form-control pla_list" /></td>
+    
+    <td><select name="Designation[]">
+			<option value="--Select--">--Select--</option>
+			<option value="Lecturer">Lecturer</option>
+			<option value="Lecturer(Sr. Scale)">Lecturer(Sr. Scale)</option>
+			<option value="Assistant Professor">Assistant Professor</option>
+			<option value="Associate Professor">Associate Professor</option>
+			<option value="Professor">Professor</option>
+			<option value="Other">Other</option>
+
+	</select></td>
+    <td><input type="text" name="pay_scale[]"  class="form-control pay_list" /></td>
+    <td><select name="AGP[]">
+    		<option value="--Select--">--Select--</option>
+			<option value="6000">6000</option>
+			<option value="7000">7000</option>
+			<option value="8000">8000</option>
+			<option value="9000">9000</option>
+			<option value="9500">9500</option>
+			<option value="10000">10000</option>
+			<option value="10500">10500</option>
+			<option value="Level 10">Level 10</option>
+			<option value="Level 11">Level 11</option>
+			<option value="Level 12">Level 12</option>
+			<option value="Level 13A1">Level 13A1</option>
+			<option value="Level 13A2">Level 13A2</option>
+			<option value="Level 14">Level 14</option>
+			<option value="Level 14A">Level 14A</option>
+			<option value="Level 15">Level 15</option>
+			<option value="Not Applicable">Not Applicable</option>
+
+	</select></td>
+
+	<td><input type="Date" name="date_from[]"></td>
+    <td><input type="Date" name="date_to[]"></td>
+    <td><input type="text" name="Org_type[]"  class="form-control type_list" /></td>
+    <td><button type="button" name="remove" id="0" class="btn_remove">X</button></td>
+    </tr>
+	</table>
+
+	<button type="button" name="add" id="add" >Add More</button>
+     <br><br>
+
+
+
+<!-- ********************************** -->
+
+    <h1>Details of Industrial experience</h1>
+
+    <table id="Industrial">
+
+	<th scope="col">Name of Organization</th><th scope="col">Address of Organization</th><th scope="col">Designation</th><th scope="col">Pay Scale</th><th scope="col">AGP/APL</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Type of Organization</th><th scope="col">Remove</th>
+    <tr id="ro0">
+	<td><input type="text" name="Organization_name[]"  class="form-control org_list" /></td>
+	<td><input type="text" name="Org_place[]"  class="form-control pla_list" /></td>
+    <td><input type="text" name="Designation[]"  class="form-control des_list" /></td>
+    <td><input type="text" name="pay_scale[]"  class="form-control pay_list" /></td>
+    <td><select name="AGP[]">
+    		<option value="--Select--">--Select--</option>
+			<option value="6000">6000</option>
+			<option value="7000">7000</option>
+			<option value="8000">8000</option>
+			<option value="9000">9000</option>
+			<option value="9500">9500</option>
+			<option value="10000">10000</option>
+			<option value="10500">10500</option>
+			<option value="Level 10">Level 10</option>
+			<option value="Level 11">Level 11</option>
+			<option value="Level 12">Level 12</option>
+			<option value="Level 13A1">Level 13A1</option>
+			<option value="Level 13A2">Level 13A2</option>
+			<option value="Level 14">Level 14</option>
+			<option value="Level 14A">Level 14A</option>
+			<option value="Level 15">Level 15</option>
+			<option value="Not Applicable">Not Applicable</option>
+
+	</select></td>
+
+	<td><input type="Date" name="date_from[]"></td>
+    <td><input type="Date" name="date_to[]"></td>
+    <td><input type="text" name="Org_type[]"  class="form-control type_list" /></td>
+    <td><button type="button" name="remove" id="0" class="btn_remove1">X</button></td>
+    </tr>
+	</table>
+	<button type="button" name="add1" id="add1" >Add More</button>
+     <br><br>
+
+
+    <!-- ********************************** -->
+
+    <h1>Deatails of Research Experience in R&D</h1>
+ 
+
+    <table id="Research">
+
+	<th scope="col">Name of Organization</th><th scope="col">Address of Organization</th><th scope="col">Designation</th><th scope="col">Pay Scale</th><th scope="col">AGP/APL</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Type of Organization</th><th scope="col">Remove</th>
+    <tr id="roww0">
+	<td><input type="text" name="Organization_name[]"  class="form-control org_list" /></td>
+	<td><input type="text" name="Org_place[]"  class="form-control pla_list" /></td>
+    <td><input type="text" name="Designation[]"  class="form-control des_list" /></td>
+    <td><input type="text" name="pay_scale[]"  class="form-control pay_list" /></td>
+    <td><select name="AGP[]">
+    		<option value="--Select--">--Select--</option>
+			<option value="6000">6000</option>
+			<option value="7000">7000</option>
+			<option value="8000">8000</option>
+			<option value="9000">9000</option>
+			<option value="9500">9500</option>
+			<option value="10000">10000</option>
+			<option value="10500">10500</option>
+			<option value="Level 10">Level 10</option>
+			<option value="Level 11">Level 11</option>
+			<option value="Level 12">Level 12</option>
+			<option value="Level 13A1">Level 13A1</option>
+			<option value="Level 13A2">Level 13A2</option>
+			<option value="Level 14">Level 14</option>
+			<option value="Level 14A">Level 14A</option>
+			<option value="Level 15">Level 15</option>
+			<option value="Not Applicable">Not Applicable</option>
+
+	</select></td>
+
+	<td><input type="Date" name="date_from[]"></td>
+    <td><input type="Date" name="date_to[]"></td>
+    <td><input type="text" name="Org_type[]"  class="form-control type_list" /></td>
+    <td><button type="button" name="remove" id="0" class="btn_remove2">X</button></td>
+    </tr>
+	</table>
+	<button type="button" name="add2" id="add2" >Add More</button>
+     <br><br>
+
+     <!--************************************************************************-->
+
+     <h1>Details of Post-Doctoral</h1>
+
+    <table id="Doctoral">
+
+    <th scope="col">Nature of Work</th><th scope="col">Name of Institution/Organization</th><th scope="col">Name of Mentor(s)/Supervisor(s)</th><th scope="col">From</th><th scope="col">To</th>
+
+
+    <tr id="rowww0">
+
+    <td><input type="text" name="nature_work[]"></td>
+    <td><input type="text" name="p_name_inst[]"></td>
+    <td><input type="text" name="name_super[]"></td>
+    <td><input type="Date" name="p_date_from[]"></td>
+    <td><input type="Date" name="p_date_to[]"></td>
+    <td><button type="button" name="remove" id="0" class="btn_remove3">X</button></td>
+
+    </tr>	
+     	
+    </table>
+
+    <button type="button" name="add3" id="add3" >Add More</button>
+    <br><br>
+
+    <!--*******************************************************************-->
+    <h1>Details of Establishment of New Labs</h1>
+    <table id="Lab">
+
+    	<th scope="col">Name of Lab Established</th><th scope="col" style="width:200px;">List of Equipment/Software</th><th scope="col">Sponsoring Agency</th><th scope="col">Co-Ordinator(s)</th>
+
+    	<tr id="r0">
+
+    		<td><input type="text" name="name_of_est[]"></td>
+            <td><input type="text" name="equip_list[]"></td>
+            <td><input type="text" name="Sponsor[]"></td>
+            <td><input type="text" name="Co-Ordinator[]"></td>
+            <td><button type="button" name="remove" id="0" class="btn_remove4">X</button></td>
+
+
+    	</tr>
+
+    </table>
+    <button type="button" name="add4" id="add4" >Add More</button>
+</form>
+    <br><br>
+
+    <!--*******************************************************************-->
+
+    <!--<h1>Details of Courses Taught</h1>
+
+    <table id="courses">
+    	<th scope="col">Academic Year</th><th scope="col">Semester</th><th scope="col" style="width:300px;">Details of Theory Courses Separated by Semicolon (CourseTitle-L-T-P-C;) </th><th scope="col">Total Credit (or Credit Hours)</th>
+
+
+
+
+    </table>-->
+
+
+	<input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+    </div> 
+
+	<script>
+		
+		$(document).ready(function(){
+		var i=0;
+		$('#add').click(function(){
+		i++;
+		$('#Teaching').append('    <tr id="row'+i+'"><td><input type="text" name="Organization_name[]"  class="form-control org_list" /></td><td><input type="text" name="Org_place[]"  class="form-control pla_list" /></td><td><select name="Designation[]"><option value="--Select--">--Select--</option><option value="Lecturer">Lecturer</option><option value="Lecturer(Sr. Scale)">Lecturer(Sr. Scale)</option><option value="Assistant Professor">Assistant Professor</option><option value="Associate Professor">Associate Professor</option><option value="Professor">Professor</option><option value="Other">Other</option></select></td><td><input type="text" name="pay_scale[]"  class="form-control pay_list" /></td><td><select name="AGP[]"><option value="--Select--">--Select--</option><option value="6000">6000</option><option value="7000">7000</option><option value="8000">8000</option><option value="9000">9000</option><option value="9500">9500</option><option value="10000">10000</option><option value="10500">10500</option><option value="Level 10">Level 10</option><option value="Level 11">Level 11</option><option value="Level 12">Level 12</option><option value="Level 13A1">Level 13A1</option><option value="Level 13A2">Level 13A2</option><option value="Level 14">Level 14</option><option value="Level 14A">Level 14A</option><option value="Level 15">Level 15</option><option value="Not Applicable">Not Applicable</option></select></td><td><input type="Date" name="date_from[]"></td><td><input type="Date" name="date_to[]"></td><td><input type="text" name="Org_type[]"  class="form-control type_list" /></td><td><button type="button" name="remove" id='+i+' class="btn_remove">X</button></td></tr>');
+
+		});
+
+        $(document).on('click', '.btn_remove', function(){
+		var button_id = $(this).attr("id"); 
+		$('#row'+button_id+'').remove();
+		});
+	
+	});
+
+		////////////////////////////////////////////////////
+
+		$(document).ready(function(){
+		var i=0;
+		$('#add1').click(function(){
+		i++;
+		$('#Industrial').append('    <tr id="ro'+i+'"><td><input type="text" name="Organization_name[]"  class="form-control org_list" /></td><td><input type="text" name="Org_place[]"  class="form-control pla_list" /></td><td><input type="text" name="Designation[]"  class="form-control des_list" /></td><td><input type="text" name="pay_scale[]"  class="form-control pay_list" /></td><td><select name="AGP[]"><option value="--Select--">--Select--</option><option value="6000">6000</option><option value="7000">7000</option><option value="8000">8000</option><option value="9000">9000</option><option value="9500">9500</option><option value="10000">10000</option><option value="10500">10500</option><option value="Level 10">Level 10</option><option value="Level 11">Level 11</option><option value="Level 12">Level 12</option><option value="Level 13A1">Level 13A1</option><option value="Level 13A2">Level 13A2</option><option value="Level 14">Level 14</option><option value="Level 14A">Level 14A</option><option value="Level 15">Level 15</option><option value="Not Applicable">Not Applicable</option></select></td><td><input type="Date" name="date_from[]"></td><td><input type="Date" name="date_to[]"></td><td><input type="text" name="Org_type[]"  class="form-control type_list" /></td><td><button type="button" name="remove" id='+i+' class="btn btn-danger btn_remove1">X</button></td></tr>');
+
+		});
+
+        $(document).on('click', '.btn_remove1', function(){
+		var button_id = $(this).attr("id"); 
+		$('#ro'+button_id+'').remove();
+		});
+	
+	});
+
+	////////////////////////////////////////////////////
+
+		$(document).ready(function(){
+		var i=0;
+		$('#add2').click(function(){
+		i++;
+		$('#Research').append('    <tr id="roww'+i+'"><td><input type="text" name="Organization_name[]"  class="form-control org_list" /></td><td><input type="text" name="Org_place[]"  class="form-control pla_list" /></td><td><input type="text" name="Designation[]"  class="form-control des_list" /></td><td><input type="text" name="pay_scale[]"  class="form-control pay_list" /></td><td><select name="AGP[]"><option value="--Select--">--Select--</option><option value="6000">6000</option><option value="7000">7000</option><option value="8000">8000</option><option value="9000">9000</option><option value="9500">9500</option><option value="10000">10000</option><option value="10500">10500</option><option value="Level 10">Level 10</option><option value="Level 11">Level 11</option><option value="Level 12">Level 12</option><option value="Level 13A1">Level 13A1</option><option value="Level 13A2">Level 13A2</option><option value="Level 14">Level 14</option><option value="Level 14A">Level 14A</option><option value="Level 15">Level 15</option><option value="Not Applicable">Not Applicable</option></select></td><td><input type="Date" name="date_from[]"></td><td><input type="Date" name="date_to[]"></td><td><input type="text" name="Org_type[]"  class="form-control type_list" /></td><td><button type="button" name="remove" id='+i+' class="btn btn-danger btn_remove2">X</button></td></tr>');
+
+		});
+
+        $(document).on('click', '.btn_remove2', function(){
+		var button_id = $(this).attr("id"); 
+		$('#roww'+button_id+'').remove();
+		});
+	
+	});
+
+    //////////////////////////////////////////////////////
+
+    	$(document).ready(function(){
+		var i=0;
+		$('#add3').click(function(){
+		i++;
+		$('#Doctoral').append('<tr id="rowww'+i+'"><td><input type="text" name="nature_work[]"></td><td><input type="text" name="p_name_inst[]"></td><td><input type="text" name="name_super[]"></td><td><input type="Date" name="p_date_from[]"></td><td><input type="Date" name="p_date_to[]"></td><td><button type="button" name="remove" id='+i+' class="btn_remove3">X</button></td></tr>	');
+
+		});
+
+        $(document).on('click', '.btn_remove3', function(){
+		var button_id = $(this).attr("id"); 
+		$('#rowww'+button_id+'').remove();
+		});
+	
+	});
+
+    //////////////////////////////////////////////////////
+
+        $(document).ready(function(){
+		var i=0;
+		$('#add4').click(function(){
+		i++;
+		$('#Lab').append('<tr id="r'+i+'"> <td><input type="text" name="name_of_est[]"></td><td><input type="text" name="equip_list[]"></td><td><input type="text" name="Sponsor[]"></td><td><input type="text" name="Co-Ordinator[]"></td><td><button type="button" name="remove" id='+i+' class="btn_remove4">X</button></td></tr>');
+
+		});
+
+        $(document).on('click', '.btn_remove4', function(){
+		var button_id = $(this).attr("id"); 
+		$('#r'+button_id+'').remove();
+		});
+	
+	});
+
+	</script>
+
+
+
+</body>
+</html>
